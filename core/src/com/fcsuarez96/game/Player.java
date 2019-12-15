@@ -7,32 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Player {
+public class Player extends Entity {
 
-  private enum Direction {UP, DOWN, RIGHT, LEFT}
-
-  private static final float SPEED = 0.3f;
-
-  private Game game;
-  private Direction direction = Direction.RIGHT;
-  private Sprite sprite;
-  private int x = 10;
-  private int y = 5;
-
-  private float tickSpeed;
 
 
   public Player(Game game) {
-    this.game = game;
-    sprite = new Sprite(new Texture("slimeBlock.png"));
-  }
-
-
-  public void draw(SpriteBatch spriteBatch) {
-    sprite.setBounds(x * Map.TILE_SIZE + Map.OFFSET_X, y * Map.TILE_SIZE + Map.OFFSET_Y + 4,
-        Map.TILE_SIZE, Map.TILE_SIZE);
-
-    sprite.draw(spriteBatch);
+    super(game,"slimeBlock.png" );
+    x = 10;
+    y = 5;
   }
 
 
@@ -40,7 +22,7 @@ public class Player {
     playerInput();
 
     tickSpeed += delta;
-    if (tickSpeed >= SPEED) {
+    if (tickSpeed >= speed) {
       tickSpeed = 0;
       playerMovement();
     }
