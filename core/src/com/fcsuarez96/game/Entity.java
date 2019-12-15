@@ -9,14 +9,13 @@ public abstract class Entity {
   public enum Direction {UP, DOWN, RIGHT, LEFT}
 
 
-
   public Game game;
   public Direction direction = Direction.RIGHT;
 
   public Sprite sprite;
   public int x;
   public int y;
-  public float speed = 0.4f;
+  public float speed = 0.3f;
 
   public float tickSpeed;
 
@@ -33,7 +32,17 @@ public abstract class Entity {
     sprite.draw(spriteBatch);
   }
 
-  public void update (float delta) {
+  public void update(float delta) {
 
+  }
+
+  public void teleport() {
+    if (x > game.map.getWidth() - 1) {
+      x = 0;
+    }
+
+    if (x < 0) {
+      x = game.map.getWidth() - 1;
+    }
   }
 }

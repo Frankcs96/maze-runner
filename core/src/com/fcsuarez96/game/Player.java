@@ -10,9 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Player extends Entity {
 
 
-
   public Player(Game game) {
-    super(game,"slimeBlock.png" );
+    super(game, "slimeBlock.png");
     x = 10;
     y = 5;
   }
@@ -20,7 +19,7 @@ public class Player extends Entity {
 
   public void update(float delta) {
     playerInput();
-
+    die();
     tickSpeed += delta;
     if (tickSpeed >= speed) {
       tickSpeed = 0;
@@ -71,6 +70,9 @@ public class Player extends Entity {
           break;
       }
     }
+    pickTreasure();
+
+    teleport();
 
   }
 
@@ -94,6 +96,34 @@ public class Player extends Entity {
         break;
     }
     return (tile == 1) || (tile == -1);
+  }
+
+  private void pickTreasure() {
+    if (game.map.getTile(x, y) == 2) {
+      game.map.setMap(game.map.getHeight() - y - 1, x, 0);
+      game.chest--;
+    }
+  }
+
+  private void die () {
+    for (int i = 0; i < game.entities.size() ; i++) {
+      if (this.x == game.entities.get(i).x && this.y ==  game.entities.get(i).y) {
+        for (Entity entity : game.entities) {
+          entity.x = 11;
+          entity.y = 11;
+        }
+
+        game.map.map = game.map.resetMap();
+        this.x = 10;
+        this.y = 5;
+        game.chest = 5;
+
+      }
+    }
+  }
+
+  public void win () {
+    game.entities.clear();
   }
 
 }
