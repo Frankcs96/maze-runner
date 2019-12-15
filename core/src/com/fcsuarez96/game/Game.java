@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Game extends ApplicationAdapter {
 	SpriteBatch spriteBatch;
 	Map map;
+	Player player;
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
 		map = new Map();
+		player = new Player(this);
 	}
 
 	@Override
@@ -21,7 +23,10 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		spriteBatch.begin();
 		map.draw(spriteBatch);
+		player.draw(spriteBatch);
 		spriteBatch.end();
+
+		player.update(Gdx.graphics.getDeltaTime());
 	}
 	
 	@Override
