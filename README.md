@@ -1,5 +1,5 @@
 # Maze runner
-Welcome to my first game with libgdx.<br>
+Welcome to my first game with libgdx, this is just a small project for testing libgdx<br>
 If you want to play download the repository and run maze runner.jar<br>
 
 
