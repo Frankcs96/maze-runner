@@ -1,11 +1,27 @@
 # Maze runner
+
 Welcome to my first game with libgdx, this is just a small project for testing libgdx<br>
 
+**Hello it's me now in 2022 :P, this was one of my first projects so the code is kinda fun to read but it makes me realize how much I have improved**
+**I decided to give some love to this project and update the whole library since it was not compatible with Mac m1**
 
 ![a](image.png)
 
 # How to play
-If you want to play download the repository and run maze runner.jar<br>
+
+If you want to play clone the repo and run<br>
+
+Local machine:
+
+```bash
+./gradlew desktop:run
+```
+
+Web browser: localhost:8080
+
+```bash
+./gradlew html:superDev
+```
 
 # LibGdx
 
@@ -23,5 +39,3 @@ D - RIGHT<BR>
 # Goal
 
 Try to get all the chest but care with the ghosts!
-
-
